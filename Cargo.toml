@@ -9,3 +9,6 @@ publish = false
 
 [dependencies]
 pico-args = "0.5.0"
+anyhow = "1.0.66"
+thiserror = "1.0.37"
+itertools = "0.10.5"
