@@ -88,12 +88,17 @@ fn parse_input_one(input: &str) -> Result<Vec<Vec<Roshambo>>> {
 }
 
 pub fn part_one(input: &str) -> Option<i32> {
-    parse_input_one(input).map(|turns| {
-        turns.iter().map(|turn| {
-            let result = GameResult::from_round(&turn[1], &turn[0]);
-            result.point_value() + turn[1].point_value()
-        }).sum()
-    }).ok()
+    parse_input_one(input)
+        .map(|turns| {
+            turns
+                .iter()
+                .map(|turn| {
+                    let result = GameResult::from_round(&turn[1], &turn[0]);
+                    result.point_value() + turn[1].point_value()
+                })
+                .sum()
+        })
+        .ok()
 }
 
 fn parse_input_two(input: &str) -> Result<Vec<Vec<Roshambo>>> {
@@ -103,17 +108,26 @@ fn parse_input_two(input: &str) -> Result<Vec<Vec<Roshambo>>> {
             let mut split = line.split(' ');
             let opponent_choice = Roshambo::from_str(split.next().unwrap()).unwrap();
             let desired_result = GameResult::from_str(split.next().unwrap()).unwrap();
-            vec![opponent_choice.clone(), Roshambo::from_result(&opponent_choice, &desired_result)]
-        }).collect())
+            vec![
+                opponent_choice.clone(),
+                Roshambo::from_result(&opponent_choice, &desired_result),
+            ]
+        })
+        .collect())
 }
 
 pub fn part_two(input: &str) -> Option<i32> {
-    parse_input_two(input).map(|turns| {
-        turns.iter().map(|turn| {
-            let result = GameResult::from_round(&turn[1], &turn[0]);
-            result.point_value() + turn[1].point_value()
-        }).sum()
-    }).ok()
+    parse_input_two(input)
+        .map(|turns| {
+            turns
+                .iter()
+                .map(|turn| {
+                    let result = GameResult::from_round(&turn[1], &turn[0]);
+                    result.point_value() + turn[1].point_value()
+                })
+                .sum()
+        })
+        .ok()
 }
 
 fn main() {
