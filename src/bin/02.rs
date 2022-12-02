@@ -83,7 +83,7 @@ impl GameResult {
 fn parse_input_one(input: &str) -> Result<Vec<Vec<Roshambo>>> {
     input
         .lines()
-        .map(|line| line.split(" ").map(|c| Roshambo::from_str(c)).collect())
+        .map(|line| line.split(' ').map(Roshambo::from_str).collect())
         .collect()
 }
 
@@ -100,7 +100,7 @@ fn parse_input_two(input: &str) -> Result<Vec<Vec<Roshambo>>> {
     Ok(input
         .lines()
         .map(|line| {
-            let mut split = line.split(" ");
+            let mut split = line.split(' ');
             let opponent_choice = Roshambo::from_str(split.next().unwrap()).unwrap();
             let desired_result = GameResult::from_str(split.next().unwrap()).unwrap();
             vec![opponent_choice.clone(), Roshambo::from_result(&opponent_choice, &desired_result)]
