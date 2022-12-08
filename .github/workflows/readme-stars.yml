@@ -2,7 +2,7 @@ name: Update readme ⭐️ progress
 
 on:
     schedule:
-        - cron: "51 */4 * * *" # Every 4 hours
+        - cron: "25 */4 * * *" # Every 4 hours
     workflow_dispatch:
 
 jobs:
