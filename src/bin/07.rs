@@ -6,7 +6,7 @@ pub struct Node<'a> {
     size: u32,
 }
 
-fn parse(input: &str) -> Arena<Node>{
+fn parse(input: &str) -> Arena<Node> {
     let mut arena = Arena::new();
     let mut current_id = arena.new_node(Node { name: "/", size: 0 });
 
