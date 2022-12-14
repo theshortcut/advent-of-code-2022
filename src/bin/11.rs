@@ -46,7 +46,7 @@ fn parse(input: &str) -> HashMap<usize, Monkey> {
                 .unwrap()
                 .replace("Operation: new = old", "")
                 .trim()
-                .split(" ")
+                .split(' ')
                 .collect_tuple()
                 .unwrap()
             {
@@ -111,19 +111,19 @@ fn execute(monkeys: &mut HashMap<usize, Monkey>, rounds: usize, worry_decrease: 
                 use Operation::*;
                 match monkey.operation {
                     Pow(x) => item.worry = item.worry.pow(x),
-                    Mul(x) => item.worry = item.worry * x,
-                    Add(x) => item.worry = item.worry + x,
+                    Mul(x) => item.worry *= x,
+                    Add(x) => item.worry += x,
                 }
                 monkey.item_inspection_count += 1;
                 if worry_decrease {
-                    item.worry = item.worry / 3;
+                    item.worry /= 3;
                 } else {
-                    item.worry = item.worry % cd;
+                    item.worry %=  cd;
                 }
                 if item.worry % monkey.decision_divisible_by == 0 {
-                    true_target.items.push(item.clone());
+                    true_target.items.push(*item);
                 } else {
-                    false_target.items.push(item.clone());
+                    false_target.items.push(*item);
                 }
             }
             monkey.items.clear();
