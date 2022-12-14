@@ -118,7 +118,7 @@ fn execute(monkeys: &mut HashMap<usize, Monkey>, rounds: usize, worry_decrease: 
                 if worry_decrease {
                     item.worry /= 3;
                 } else {
-                    item.worry %=  cd;
+                    item.worry %= cd;
                 }
                 if item.worry % monkey.decision_divisible_by == 0 {
                     true_target.items.push(*item);
