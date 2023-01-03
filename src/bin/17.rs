@@ -49,7 +49,7 @@ impl RockShape {
             .iter()
             .map(|(x, _)| x)
             .max()
-            .map(|m| *m)
+            .copied()
             .unwrap()
     }
 
@@ -58,7 +58,7 @@ impl RockShape {
             .iter()
             .map(|(_, y)| y)
             .max()
-            .map(|m| *m)
+            .copied()
             .unwrap()
     }
 
@@ -91,7 +91,7 @@ fn parse(input: &str) -> Vec<Direction> {
         .collect()
 }
 
-fn simulate(directions: &Vec<Direction>, rock_count: i64) -> i64 {
+fn simulate(directions: &[Direction], rock_count: i64) -> i64 {
     let mut dirs = directions.iter().cycle();
     let mut shapes = FALL_ORDER.iter().cycle();
     let mut chamber_state: HashSet<Coord> = HashSet::new();
