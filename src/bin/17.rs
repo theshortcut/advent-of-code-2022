@@ -136,8 +136,8 @@ pub fn part_one(input: &str) -> Option<i64> {
 }
 
 pub fn part_two(input: &str) -> Option<i64> {
-    let directions = parse(input);
-    Some(simulate(&directions, 1_000_000_000_000))
+    let _directions = parse(input);
+    None
 }
 
 fn main() {
